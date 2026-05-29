@@ -45,9 +45,22 @@ const ExpertDetailPage = () => {
     </div>
   );
 
-  const { name, title, category, bio, expertise, hourlyRate, rating,
-          totalReviews, experience, avatar, isAvailable,
-          completedSessions, languages, availableSlots } = expert;
+  const {
+    name = "Unknown Expert",
+    title = "Expert",
+    category = "Business",
+    bio = "No bio available.",
+    expertise = [],
+    hourlyRate = 0,
+    rating = 0,
+    totalReviews = 0,
+    experience = 0,
+    avatar = "https://ui-avatars.com/api/?name=Expert&background=1E2D45&color=D4AF37",
+    isAvailable = false,
+    completedSessions = 0,
+    languages = [],
+    availableSlots = [],
+  } = expert;
 
   const starFill = (star) => star <= Math.round(rating) ? "text-brand-gold" : "text-brand-border";
 

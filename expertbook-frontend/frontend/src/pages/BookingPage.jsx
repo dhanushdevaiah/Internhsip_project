@@ -90,7 +90,9 @@ const BookingPage = () => {
     }
   };
 
-  const totalCost = expert ? (expert.hourlyRate * form.duration).toLocaleString() : "–";
+  const totalCost = expert && Number.isFinite(expert.hourlyRate)
+    ? (expert.hourlyRate * form.duration).toLocaleString()
+    : "0";
 
   if (loading) return (
     <div className="pt-28 max-w-2xl mx-auto px-6">
@@ -227,7 +229,7 @@ const BookingPage = () => {
 
                 <div className="space-y-3 text-sm">
                   {[
-                    { label: "Rate",        value: `₹${expert.hourlyRate.toLocaleString()}/hr` },
+                    { label: "Rate",        value: `₹${Number.isFinite(expert.hourlyRate) ? expert.hourlyRate.toLocaleString() : "0"}/hr` },
                     { label: "Duration",    value: DURATIONS.find((d) => d.value === form.duration)?.label },
                     { label: "Date",        value: form.date || "–" },
                     { label: "Time",        value: form.timeSlot || "–" },
